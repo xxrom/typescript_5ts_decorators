@@ -28,3 +28,29 @@ var Car = /** @class */ (function () {
     ], Car);
     return Car;
 }());
+// Advanced
+function printable(consturctorFn) {
+    consturctorFn.prototype.print = function () {
+        console.log(this);
+        this.test = 'test';
+    };
+}
+function printable2(consctructionFn) {
+    consctructionFn.prototype.print2 = function () {
+        console.log('hello print2', this);
+    };
+}
+var Plant = /** @class */ (function () {
+    function Plant() {
+        this.name = 'Green';
+    }
+    Plant = __decorate([
+        printable,
+        printable2
+    ], Plant);
+    return Plant;
+}());
+var plant = new Plant();
+// plant.print(); // error print didn't exist
+plant.print();
+plant.print2();
